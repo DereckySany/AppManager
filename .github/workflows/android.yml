@@ -41,4 +41,5 @@ jobs:
       
     - name: Create Bundled App (APKS format)
       run: |
+        chmod +x ./scripts/aab_to_apks.sh
         ./scripts/aab_to_apks.sh debug
