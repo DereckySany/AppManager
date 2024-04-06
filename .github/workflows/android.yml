@@ -27,7 +27,9 @@ jobs:
       
     - name: Install bundletool on Linux
       run: |
-        sudo apt-get install -y bundletool
+        wget 'https://objects.githubusercontent.com/github-production-release-asset-2e65be/132104296/9b72e02c-edf3-4618-a84f-869ac3423e42?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240406%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240406T133221Z&X-Amz-Expires=300&X-Amz-Signature=1219ca072990ae585f20184bc3f39d44c2ff0f87b24b61316dc1e9fbe6e62de3&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=132104296&response-content-disposition=attachment%3B%20filename%3Dbundletool-all-1.15.6.jar&response-content-type=application%2Foctet-stream'
+        mv bundletool-all-1.15.6.jar bundletool-all.jar
+        alias bundletool='java -jar bundletool-all.jar'
       
     - name: Clone repository with submodules
       run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
