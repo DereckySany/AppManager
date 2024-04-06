@@ -28,11 +28,6 @@ jobs:
     - name: Install bundletool on Linux
       run: |
         sudo apt-get install -y bundletool
-        
-    - name: Install bundletool on macOS
-      run: |
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        brew install bundletool
       
     - name: Clone repository with submodules
       run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
