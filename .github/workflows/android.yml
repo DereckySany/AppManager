@@ -43,13 +43,19 @@ jobs:
       run: |
         cd AppManager
         ./gradlew packageDebugUniversalApk
-        cd app/build
         find -name *.apk
       
+    # cd app/build
     # - name: Create Bundled App (APKS format)
     #   run: |
     #     chmod +x ./scripts/aab_to_apks.sh
     #     ./scripts/aab_to_apks.sh debug
+
+    - name: Upload debug APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: AppManagerDebug
+        path: app/build/outputs/apk_from_bundle/debug/*.apk
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
