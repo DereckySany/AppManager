@@ -29,19 +29,20 @@ jobs:
       run: |
         wget 'https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar'
         mv bundletool-all-1.15.6.jar bundletool-all.jar
+
     - name: Configure bundletool on path
       run: |
-        echo "java -jar bundletool-all.jar" > bundletool
+        echo "java -jar $(realpath bundletool-all.jar)" > bundletool
         chmod +x bundletool
         sudo mv bundletool /usr/bin
 
-    # - name: Clone repository with submodules
-    #   run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
+    - name: Clone repository with submodules
+      run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
       
-    # - name: Build debug version of App Manager
-    #   run: |
-    #     cd AppManager
-    #     ./gradlew packageDebugUniversalApk
+    - name: Build debug version of App Manager
+      run: |
+        cd AppManager
+        ./gradlew packageDebugUniversalApk
       
     - name: Create Bundled App (APKS format)
       run: |
