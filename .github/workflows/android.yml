@@ -43,7 +43,8 @@ jobs:
       run: |
         cd AppManager
         ./gradlew packageDebugUniversalApk
-        tree app/build/outputs/apk
+        cd app/build
+        find -name *.apk
       
     # - name: Create Bundled App (APKS format)
     #   run: |
