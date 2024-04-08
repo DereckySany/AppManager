@@ -44,7 +44,13 @@ jobs:
         cd AppManager
         ./gradlew packageDebugUniversalApk
       
-    - name: Create Bundled App (APKS format)
-      run: |
-        chmod +x ./scripts/aab_to_apks.sh
-        ./scripts/aab_to_apks.sh debug
+    # - name: Create Bundled App (APKS format)
+    #   run: |
+    #     chmod +x ./scripts/aab_to_apks.sh
+    #     ./scripts/aab_to_apks.sh debug
+
+    - name: Upload debug APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk-minApi21-debug
+        path: app/build/outputs/apk/*/debug
