@@ -25,10 +25,17 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gradle texlive pandoc tree
       
+    # - name: Install bundletool on Linux
+    #   run: |
+    #     wget 'https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar'
+    #     mv bundletool-all-1.15.6.jar bundletool-all.jar
+    
     - name: Install bundletool on Linux
       run: |
-        wget 'https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar'
-        mv bundletool-all-1.15.6.jar bundletool-all.jar
+        # Baixa a última versão do bundletool
+         LATEST_BUNDLETOOL_VERSION=$(curl -s https://api.github.com/repos/google/bundletool/releases/latest | grep 'tag_name' | cut -d '"' -f 4)
+         wget "https://github.com/google/bundletool/releases/download/$LATEST_BUNDLETOOL_VERSION/bundletool-all-$LATEST_BUNDLETOOL_VERSION.jar"
+         mv "bundletool-all-$LATEST_BUNDLETOOL_VERSION.jar" bundletool-all.jar
 
     - name: Configure bundletool on path
       run: |
@@ -55,7 +62,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: AppManagerDebug
-        path: ./AppManager/app/build/outputs/apk_from_bundle/debug/app-debug-universal.apk
+        path: ./app/build/outputs/apk_from_bundle/debug/app-debug-universal.apk
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
