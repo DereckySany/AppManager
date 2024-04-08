@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "java -jar bundletool-all.jar" > bundletool
         chmod +x bundletool
-        mv bundletool /usr/bin
+        sudo mv bundletool /usr/bin
 
     # - name: Clone repository with submodules
     #   run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
