@@ -55,7 +55,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: AppManagerDebug
-        path: ./app/build/outputs/apk_from_bundle/debug/app-debug-universal.apk
+        path: ./AppManager/app/build/outputs/apk_from_bundle/debug/app-debug-universal.apk
 
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
