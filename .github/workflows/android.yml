@@ -29,7 +29,12 @@ jobs:
       run: |
         wget 'https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar'
         mv bundletool-all-1.15.6.jar bundletool-all.jar
-      
+    - name: Configure bundletool on path
+      run: |
+        echo "java -jar bundletool-all.jar" > bundletool
+        chmod +x bundletool
+        mv bundletool /usr/bin
+
     # - name: Clone repository with submodules
     #   run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
       
@@ -40,7 +45,5 @@ jobs:
       
     - name: Create Bundled App (APKS format)
       run: |
-        alias bundletool='java -jar bundletool-all.jar'
-        env
         chmod +x ./scripts/aab_to_apks.sh
         ./scripts/aab_to_apks.sh debug
