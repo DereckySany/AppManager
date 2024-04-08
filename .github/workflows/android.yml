@@ -54,5 +54,5 @@ jobs:
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
       with:
-        name: packageDebugUniversal
+        name: app-debug-universal
         path: app/build/outputs/apk_from_bundle/debug
