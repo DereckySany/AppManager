@@ -55,12 +55,12 @@ jobs:
         chmod +x bundletool
         sudo mv bundletool /usr/bin
 
-    - name: Clone repository with submodules
-      run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
-      
+    # - name: Clone repository with submodules
+    #   run: git clone --recurse-submodules https://github.com/MuntashirAkon/AppManager.git
+    # cd AppManager
+       
     - name: Build debug version of App Manager
       run: |
-        cd AppManager
         ./gradlew packageDebugUniversalApk
         find -name *.apk
       
