@@ -65,10 +65,11 @@ jobs:
         find -name *.apk
       
     # cd app/build
-    # - name: Create Bundled App (APKS format)
-    #   run: |
-    #     chmod +x ./scripts/aab_to_apks.sh
-    #     ./scripts/aab_to_apks.sh debug
+    - name: Create Bundled App (APKS format)
+      run: |
+        chmod +x ./scripts/aab_to_apks.sh
+        ./scripts/aab_to_apks.sh debug
+        find -name *.aab
 
     - name: Rename the APK file
       run: mv ./app/build/outputs/apk_from_bundle/debug/app-debug-universal.apk ./${{ env.APP_NAME }}.apk
